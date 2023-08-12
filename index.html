@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Database</title>
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Codystar:wght@300;400&family=Press+Start+2P&display=swap');
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url(https://e0.pxfuel.com/wallpapers/883/989/desktop-wallpaper-starry-sky-night-dark-sky-stars-widescreen-16-9-background-dark-sky-with-stars.jpg);
+    }
+    header {
+      font-family: 'Press Start 2P', cursive;
+      background-image: linear-gradient(to right, #00b4db, #0083b0);
+      color: #fff;
+      text-align: left;
+      padding: 10px;
+    }
+    #container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+    .movie-card {
+      font-family: 'Codystar', cursive;
+      font-weight: 900;
+      width: 300px;
+      margin: 20px;
+      padding: 15px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+    }
+    .movie-title {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .movie-info {
+      margin-bottom: 10px;
+    }
+    .movie-year, .movie-stars, .movie-ratings {
+      font-weight: bold;
+    }
+    .delete-btn {
+      background-color: #ff3333;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .menu {
+        font-family: 'Codystar', cursive;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .menu input {
+        width: 22%;
+        height: 3em;
+        background-color: transparent;
+        border: 3px solid lightcoral;
+        border-radius: 5px;
+        color: white;
+        margin: 1px;
+
+    }
+
+    #addMovie {
+        width: 10%;
+        border-radius: 5px;
+        background-color: lightskyblue;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        cursor: pointer;
+        transition: 0.5s ease-in-out;
+    }
+
+    #addMovie:hover{
+        opacity: 0.5;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Movie Database</h1>
+  </header>
+  <div id="container">
+    <!-- dynamic adding of movie will happen here, so this will allow adding more movies-->
+    <div class="movie-card">
+        <div class="movie-title">Star Wars: A New Hope</div>
+        <div class="movie-info">
+          Year: 1977<br>
+          Stars: Mark Hamill, Harrison Ford, Carrie Fisher<br>
+          Ratings: 8.6
+        </div>
+        <button class="delete-btn">Delete</button>
+      </div>
+      
+      <div class="movie-card">
+        <div class="movie-title">Star Wars: The Empire Strikes Back</div>
+        <div class="movie-info">
+          Year: 1980<br>
+          Stars: Mark Hamill, Harrison Ford, Carrie Fisher<br>
+          Ratings: 8.7
+        </div>
+        <button class="delete-btn">Delete</button>
+      </div>
+      
+      <div class="movie-card">
+        <div class="movie-title">Star Wars: Return of the Jedi</div>
+        <div class="movie-info">
+          Year: 1983<br>
+          Stars: Mark Hamill, Harrison Ford, Carrie Fisher<br>
+          Ratings: 8.3
+        </div>
+        <button class="delete-btn">Delete</button>
+      </div>
+      
+      <div class="movie-card">
+        <div class="movie-title">Star Wars: The Force Awakens</div>
+        <div class="movie-info">
+          Year: 2015<br>
+          Stars: Daisy Ridley, John Boyega, Oscar Isaac<br>
+          Ratings: 7.8
+        </div>
+        <button class="delete-btn">Delete</button>
+      </div>
+      
+      <div class="movie-card">
+        <div class="movie-title">Star Wars: The Last Jedi</div>
+        <div class="movie-info">
+          Year: 2017<br>
+          Stars: Daisy Ridley, Adam Driver, John Boyega<br>
+          Ratings: 7.0
+        </div>
+        <button class="delete-btn">Delete</button>
+      </div>      
+
+  <div class="menu">
+    <input type="text" id="movieName" placeholder="Movie Name">
+    <input type="text" id="releaseYear" placeholder="Release Year">
+    <input type="text" id="stars" placeholder="Stars">
+    <input type="text" id="ratings" placeholder="Ratings">
+    <button id="addMovie">Add Movie</button>
+  </div>
+  <script>
+    const container = document.getElementById('container');
+    const addMovieBtn = document.getElementById('addMovie');
+    
+    addMovieBtn.addEventListener('click', () => {
+      const movieName = document.getElementById('movieName').value;
+      const releaseYear = document.getElementById('releaseYear').value;
+      const stars = document.getElementById('stars').value;
+      const ratings = document.getElementById('ratings').value;
+
+      if (movieName && releaseYear && stars && ratings) {
+        const movieCard = document.createElement('div');
+        movieCard.className = 'movie-card';
+        
+        const title = document.createElement('div');
+        title.className = 'movie-title';
+        title.textContent = movieName;
+        
+        const info = document.createElement('div');
+        info.className = 'movie-info';
+        info.innerHTML = `
+          <span class="movie-year">Year: ${releaseYear}</span>
+          <span class="movie-stars">Stars: ${stars}</span>
+          <span class="movie-ratings">Ratings: ${ratings}</span>
+        `;
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'delete-btn';
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.addEventListener('click', () => {
+          container.removeChild(movieCard);
+        });
+
+        movieCard.appendChild(title);
+        movieCard.appendChild(info);
+        movieCard.appendChild(deleteBtn);
+
+        container.appendChild(movieCard);
+
+        // Clear input fields
+        document.getElementById('movieName').value = '';
+        document.getElementById('releaseYear').value = '';
+        document.getElementById('stars').value = '';
+        document.getElementById('ratings').value = '';
+      }
+    });
+  </script>
+</body>
+</html>
