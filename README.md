@@ -1,6 +1,6 @@
-# Movie Database Web App
+# Star Wars Movie Database Web App
 
-Welcome to the Movie Database web app repository! This project allows users to input movie details, including the movie name, release year, stars, and ratings. Each entry creates a new movie card displayed on the webpage. The app is built using HTML, CSS, and JavaScript.
+Welcome to the Star Wars Movie Database web app repository! This project allows users to input movie details, including the movie name, release year, stars, and ratings. Each entry creates a new movie card displayed on the webpage. The app is built using HTML, CSS, and JavaScript.
 
 
 ## Features
