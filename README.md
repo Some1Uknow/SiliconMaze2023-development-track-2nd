@@ -11,3 +11,4 @@ Welcome to the Star Wars Movie Database web app repository! This project allows 
 
 ## How to use
 - Just open the index.html file, it has all the CSS and Javascript embedded in it.
+- Or simple click on this url - https://some1uknow.github.io/SiliconMaze2023-development-track-2nd/
